@@ -1,7 +1,9 @@
 package com.example.springdatadb;
 
 import org.apache.tomcat.jni.Local;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -14,7 +16,7 @@ import java.util.Date;
 import java.util.List;
 
 @Transactional
-public interface BirdRepository extends JpaRepository<Bird, Integer> {
+public interface BirdRepository extends JpaRepository<Bird, Integer>, JpaSpecificationExecutor<Bird> {
  List<Bird> findByName(String name);
  List<Bird> findByAge(Integer age);
 

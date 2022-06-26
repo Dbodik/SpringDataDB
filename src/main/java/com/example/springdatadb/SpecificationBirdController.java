@@ -14,6 +14,10 @@ public class SpecificationBirdController {
     BirdRepository birdRepository;
     @GetMapping("/birds")
     public List<Bird> getBirdList(){
+        BirdSpecification spec =
+                new BirdSpecification(new SearchCriteria("name", ":", "John"));
 
+        List<Bird> results = birdRepository.findAll(spec);
+        return results;
     }
 }
